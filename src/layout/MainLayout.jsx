@@ -1,9 +1,14 @@
+import { Outlet } from "react-router-dom";
+import Footer from "../Shared/Footer/Footer";
+import Navbar from "../Shared/Navbar/Navbar";
 
 
 const MainLayout = () => {
     return (
         <div className="font-openSans">
-            <h2>Hello word</h2>
+            <Navbar></Navbar>
+            <Outlet></Outlet>
+            <Footer></Footer>
         </div>
     );
 };
