@@ -67,14 +67,14 @@ const Register = () => {
         })
     }
     return (
-        <div className="my-14">
+        <div className=" bg-orange-50 py-20">
               <div className="">
                 <p className="flex justify-center"> 
-                 <FaRegEnvelopeOpen className=" text-2xl font-bold text-blue-800"></FaRegEnvelopeOpen></p>
+                 <FaRegEnvelopeOpen className=" text-2xl font-bold text-emerald-400"></FaRegEnvelopeOpen></p>
                <h3 className="text-2xl md:text-3xl mt-3  text-center font-medium md:font-semibold
-                 text-blue-600 "> Register your account</h3>
+                 text-emerald-400 "> Register your account</h3>
              </div>
-            <div className="w-5/6 lg:w-2/5 bg-red-50 rounded-lg shadow-md py-20 m-auto mt-10 mb-40">
+            <div className="w-5/6 lg:w-2/5 bg-white  rounded-lg shadow-md py-10 m-auto mt-10 ">
                
                 <form onSubmit={handleRegister} className="w-4/5 md:w-3/4 lg:w-3/4 mx-auto">
                     <div className="form-control">
@@ -123,12 +123,12 @@ const Register = () => {
                         <label className="ml-2 " htmlFor="terms"> <a href="">Accept Term & Conditions</a></label>
                      </div>
                     <div className="form-control mt-6">
-                        <button className="btn text-xl font-semibold bg-blue-600 text-white">Register</button>
+                        <button className="btn text-xl font-semibold bg-emerald-400 text-white">Register</button>
                     </div>
                 </form>
                 <p className=" w-4/5 md:w-3/4 lg:w-3/4 m-auto
                  text-center my-7 text-base font-semibold "> Already have an account ? Please <Link to="/login"
-                 className="text-blue-600"> Login</Link></p>
+                 className="text-emerald-400"> Login</Link></p>
             </div>
         </div>
     );
