@@ -31,7 +31,7 @@ import Swal from "sweetalert2";
        
        })
        .catch(error => {
-        Swal(error.message)
+        Swal.fire(error.message)
        })
     }
    //google

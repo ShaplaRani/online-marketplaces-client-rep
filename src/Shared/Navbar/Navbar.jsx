@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
-
+import logo from '../../assets/logo.jpeg'
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
@@ -11,12 +11,12 @@ const Navbar = () => {
         logout()
             .then(result => {
 
-                Swal('Sign Out Successful')
+                Swal.fire('Sign Out Successful')
                 console.log(result.user);
             })
             .catch(error => {
                 console.error(error);
-                // swal(error.message)
+                 Swal.fire(error.message)
             })
     }
 
@@ -78,8 +78,8 @@ const Navbar = () => {
 </>
 
     return (
-        <div>
-           <div className="navbar bg-base-100">
+        <div className="container mx-auto">
+             <div className="navbar bg-base-100 mt-5">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -89,18 +89,13 @@ const Navbar = () => {
         {
             navLinks
         }
-        {/* <li><a>Item 1</a></li>
-        <li>
-          <a>Parent</a>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li>
-        <li><a>Item 3</a></li> */}
+        
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+     <div className="flex gap-0">
+     <img className="w-40 h-14 border " src={logo} alt="" />
+    <a className="btn btn-ghost normal-case text-xl ">Bit Jobs</a>
+     </div>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="flex gap-3 md:gap-5 justify-center mt-1 mb-2">
@@ -123,17 +118,31 @@ const Navbar = () => {
   <div className="navbar-end">
     {/* <NavLink to ="/login">login</NavLink> */}
           {
-                    user ? <div className="flex justify-center items-center">
-                        <img className="w-7 h-7 rounded-full mr-3" src={user.photoURL} alt="" />
-                        <p className="text-lg font-medium mr-3">{user.displayName}</p>
+                    user ? <div className="flex items-center ">
+                        
+                       
+                         <div className=" navbar-center hidden md:flex">
+                         <img className="w-7 h-7 rounded-full mr-3" src={user.photoURL} alt="" />
+                         <p className="text-lg font-medium mr-3">{user.displayName}</p>
+                         </div>
+                     
                         <button onClick={handleSignOut} className="btn bg-blue-700 text-base text-white">Sign Out</button>
+                        
                     </div> :
                         <Link to="/login"> <button 
                         className="btn bg-blue-700 text-base text-white">Login</button></Link>
                 }
-  </div>
-</div>
-            
+            </div>
+   
+            </div>
+            <div className="md:hidden">
+                     {
+                        user && <div className=" flex justify-end">
+                        <img className="w-7 h-7 rounded-full mr-3" src={user.photoURL} alt="" />
+                        <p className="text-lg font-medium mr-3">{user.displayName}</p>
+                        </div>
+                     }
+            </div>
         </div>
     );
 };

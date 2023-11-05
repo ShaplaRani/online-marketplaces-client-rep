@@ -2,7 +2,7 @@ import banner from "../../../assets/banner.jpg"
 
 const Banner = () => {
     return (
-        <div className=" lg:flex items-center container mx-auto p-4">
+        <div className=" lg:flex items-center container mx-auto p-4 mt-10 lg:mt-0">
             <div className="flex-1 space-y-7 text-center lg:text-left">
                   <h3 className="font-bold text-5xl leading-tight">Freelance Services For <br />
                     Your Business</h3>

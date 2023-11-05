@@ -26,21 +26,21 @@ const Register = () => {
        
         if(password.length < 6){
             
-            Swal('password should be a least 6 characters or larger')
+            Swal.fire('password should be a least 6 characters or larger')
             return;
         }
         if(!/[A-Z]/.test(password)){
             
-            Swal('Your password should have at least one capital letter')
+            Swal.fire('Your password should have at least one capital letter')
             return;
         }
         if(!/[!@#$%^&*()_+{}[\]:;<>,.?~\\-]/.test(password)){
             
-            Swal('Your password should have at least one special character')
+            Swal.fire('Your password should have at least one special character')
             return;
         }
         if(!accepted){
-            Swal('Please accept our terms and condition')
+            Swal.fire('Please accept our terms and condition')
             return;
         }
         //create user
@@ -58,12 +58,17 @@ const Register = () => {
             })
             .then(() => {console.log("profile update")})
             .catch( error => console.error(error))
-            Swal('User Created Successfully')
+            Swal.fire('User Created Successfully')
         })
         .catch(error => {
             console.error(error)
             
-            Swal(error.message)
+            Swal.fire({
+                title: 'Error!',
+                text: 'Do you want to continue',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
         })
     }
     return (
