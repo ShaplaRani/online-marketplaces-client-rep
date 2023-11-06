@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 
 const CategoryCard = ({category}) => {
     console.log(category);
-    const {title, date,maxPrice,minPrice,description} = category;
+    const {_id,title, date,maxPrice,minPrice,description} = category;
     // const truncatedDescription = (description.length).slice(0, 20);
     return (
         <div>
@@ -21,7 +22,11 @@ const CategoryCard = ({category}) => {
                        </p>
                     
                     <div className="card-actions justify-end">
-                        <button className="bg-emerald-400 py-3 px-6 rounded-lg text-white">Bid Now</button>
+                        <Link to={`/jobs/${_id}`}>
+                        <button  className="bg-emerald-400 py-3 px-6 rounded-lg text-white">Bid Now</button>
+                         
+                        </Link>
+                        
                     </div>
                 </div>
             </div>

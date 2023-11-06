@@ -9,6 +9,7 @@ import PostedJobs from "../pages/PostedJobs/PostedJobs";
 import Mybids from "../pages/MyBids/Mybids";
 import PrivateRoutes from "./PrivateRoutes";
 import ProductUpdate from "../component/ProductUpdate/ProductUpdate";
+import JobDetails from "../pages/JobDetails/JobDetails";
 
 
 const router = createBrowserRouter([
@@ -42,6 +43,12 @@ const router = createBrowserRouter([
           element:<ProductUpdate></ProductUpdate>,
           loader: ({params}) => 
         fetch(`http://localhost:5000/api/email-product/${params.id}`)
+        },
+        {
+          path:'/jobs/:id',
+          element:<PrivateRoutes><JobDetails></JobDetails></PrivateRoutes>,
+          loader: ({params}) => 
+          fetch(`http://localhost:5000/api/email-product/${params.id}`)
         },
         {
           path:'/bids',

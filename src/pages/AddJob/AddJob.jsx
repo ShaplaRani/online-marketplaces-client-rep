@@ -23,10 +23,7 @@ const AddJob = () => {
             maxPrice,
             minPrice,
             description
-            // img: img,
-            // service: title,
-            // service_id: _id,
-            // price: price
+            
         }
         console.log(addJob);
         fetch('http://localhost:5000/api/user/create-product', {
@@ -43,7 +40,7 @@ const AddJob = () => {
                       Swal.fire({
                         
                         title: 'Success!',
-                        text: 'Product added Successfully',
+                        text: 'Job Added Successfully',
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
@@ -60,7 +57,9 @@ const AddJob = () => {
                     <div className="md:flex gap-4">
                        {/* Email */}
                        <div className="form-control flex-1">
-                            <input type="email" placeholder="Your Email" defaultValue={user?.email} name="email" className="input input-bordered" required readOnly />
+                            <input type="email" placeholder="Your Email" 
+                            defaultValue={user?.email} name="email" className="input input-bordered"
+                             required readOnly />
                         </div>
                         {/* title */}
                         <div className="form-control flex-1">
