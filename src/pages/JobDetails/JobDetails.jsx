@@ -97,7 +97,7 @@ const JobDetails = () => {
                     
                      
                     <div className="w-full text-white mt-6 py-2 text-center rounded-lg text-xl font-semibold bg-emerald-400">
-                         <button className={user.email === email? "disable":"enable"}>
+                         <button className={user.email === email? 'disabled':"enabled"}>
                             Bid On The Project</button>
                     </div>
                 </form> 
