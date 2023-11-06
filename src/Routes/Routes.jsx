@@ -7,6 +7,8 @@ import Login from "../pages/Login/Login";
 import AddJob from "../pages/AddJob/AddJob";
 import PostedJobs from "../pages/PostedJobs/PostedJobs";
 import Mybids from "../pages/MyBids/Mybids";
+import PrivateRoutes from "./PrivateRoutes";
+import ProductUpdate from "../component/ProductUpdate/ProductUpdate";
 
 
 const router = createBrowserRouter([
@@ -29,11 +31,17 @@ const router = createBrowserRouter([
         },
         {
           path:'/addJob',
-          element:<AddJob></AddJob>
+          element:<PrivateRoutes><AddJob></AddJob></PrivateRoutes>
         },
         {
           path:'/postedJob',
-          element:<PostedJobs></PostedJobs>
+          element:<PrivateRoutes><PostedJobs></PostedJobs></PrivateRoutes>
+        },
+        {
+          path:'/product/:id',
+          element:<ProductUpdate></ProductUpdate>,
+          loader: ({params}) => 
+        fetch(`http://localhost:5000/api/email-product/${params.id}`)
         },
         {
           path:'/bids',

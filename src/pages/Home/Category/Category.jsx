@@ -43,7 +43,7 @@ console.log(categoryDate);
       <h2>Any content 2</h2>
       <div className='grid grid-cols-1 mg:grid-cols-2 lg:grid-cols-4 gap-4'>
           {
-            categoryDate.length >= 0 && categoryDate.map(category => <CategoryCard key={category.id} category ={category}></CategoryCard>)
+            categoryDate.length >= 0 && categoryDate.map(category => <CategoryCard key={category._id} category ={category}></CategoryCard>)
           }
        </div>
     </TabPanel>
