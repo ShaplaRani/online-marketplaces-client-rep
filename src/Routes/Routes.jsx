@@ -4,6 +4,9 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home/Home";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
+import AddJob from "../pages/AddJob/AddJob";
+import PostedJobs from "../pages/PostedJobs/PostedJobs";
+import Mybids from "../pages/MyBids/Mybids";
 
 
 const router = createBrowserRouter([
@@ -24,6 +27,18 @@ const router = createBrowserRouter([
           path:'/login',
           element:<Login></Login>
         },
+        {
+          path:'/addJob',
+          element:<AddJob></AddJob>
+        },
+        {
+          path:'/postedJob',
+          element:<PostedJobs></PostedJobs>
+        },
+        {
+          path:'/bids',
+          element:<Mybids></Mybids>
+        }
       ]
     },
   ]);

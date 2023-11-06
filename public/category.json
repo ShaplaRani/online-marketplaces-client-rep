@@ -1,0 +1,45 @@
+[
+    {
+        "id":1,
+      "jobTitle": "Front-End Web Developer",
+      "category": "web development",
+      "deadline": "2023-12-15",
+      "priceRange": "$40 - $60 per hour",
+      "description": "Looking for a skilled front-end web developer to work on our exciting e-commerce project. Must have expertise in HTML, CSS, and JavaScript, and be able to create responsive, user-friendly web interfaces. Join our team and help us create a top-notch online shopping experience!"
+    },
+    {  "id":2,
+      "jobTitle": "Full-Stack Web Developer",
+      "category": "web development",
+      "deadline": "2023-11-30",
+      "priceRange": "$50,000 - $70,000 per year",
+      "description": "We are seeking a talented full-stack web developer to join our startup. Your role will involve developing, testing, and maintaining web applications from both the front-end and back-end. If you have a passion for creating efficient and scalable web solutions, apply now and be a part of our innovative team!"
+    },
+    {   "id":3,
+        "jobTitle": "Digital Marketing Specialist",
+        "category": "Digital Marketing",
+        "deadline": "2023-12-20",
+        "priceRange": "$50,000 - $70,000 per year",
+        "description": "Join our team as a Digital Marketing Specialist and play a key role in driving our online presence. You'll be responsible for creating and implementing digital marketing strategies, managing social media campaigns, and analyzing performance metrics to optimize results. If you're passionate about all things digital marketing, apply now!"
+      },
+      { "id":4,
+        "jobTitle": "SEO Analyst",
+        "category": "Digital Marketing",
+        "deadline": "2023-11-30",
+        "priceRange": "$40 - $60 per hour",
+        "description": "We are looking for an SEO Analyst to help improve our website's search engine rankings and visibility. Your responsibilities will include keyword research, on-page optimization, and monitoring website performance. If you have a strong understanding of SEO best practices, join our team and help us achieve top search rankings!"
+      },
+    {   "id":5,
+        "jobTitle": "Digital Marketing Specialist",
+        "category": "Digital Marketing",
+        "deadline": "2023-12-20",
+        "priceRange": "$50,000 - $70,000 per year",
+        "description": "Join our team as a Digital Marketing Specialist and play a key role in driving our online presence. You'll be responsible for creating and implementing digital marketing strategies, managing social media campaigns, and analyzing performance metrics to optimize results. If you're passionate about all things digital marketing, apply now!"
+      },
+      { "id":6,
+        "jobTitle": "SEO Analyst",
+        "category": "Digital Marketing",
+        "deadline": "2023-11-30",
+        "priceRange": "$40 - $60 per hour",
+        "description": "We are looking for an SEO Analyst to help improve our website's search engine rankings and visibility. Your responsibilities will include keyword research, on-page optimization, and monitoring website performance. If you have a strong understanding of SEO best practices, join our team and help us achieve top search rankings!"
+      }
+  ]
