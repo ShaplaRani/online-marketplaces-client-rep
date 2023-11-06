@@ -6,8 +6,9 @@ import CategoryCard from './CategoryCard';
 const Category = () => {
     const [allCategory , setAllCategory] = useState([]);
     const [categoryDate , setCategoryDate] = useState([])
+
     useEffect(() => {
-        fetch('category.json')
+        fetch('http://localhost:5000/api/category-product')
         .then(res => res.json())
         .then(data => setAllCategory(data))
     },[])
@@ -24,7 +25,7 @@ console.log(categoryDate);
               <h2 className='text-center mb-6 text-3xl font-extrabold text-blue-600'>Browse talent by category</h2>
              <Tabs>
     <TabList className="text-center  flex mb-10 justify-center">
-      <Tab onClick={() =>handleCategory('web development')}className=" py-6 px-10 focus:bg-white bg-gray-200 border font-bold text-xl capitalize focus:text-emerald-400">web development</Tab>
+      <Tab onClick={() =>handleCategory('Web Development')}className=" py-6 px-10 focus:bg-white bg-gray-200 border font-bold text-xl capitalize focus:text-emerald-400">web development</Tab>
       <Tab onClick={() =>handleCategory('Digital Marketing')} className=" py-6 px-10 focus:bg-white bg-gray-200 border capitalize text-xl font-bold focus:text-emerald-400">digital marketing</Tab>
       <Tab onClick={() =>handleCategory('graphics design')}className=" py-6 px-10 focus:bg-white bg-gray-200 border  font-bold text-xl capitalize focus:text-emerald-400">graphics design</Tab>
     </TabList>
