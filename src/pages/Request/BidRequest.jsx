@@ -1,23 +1,24 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import axios from "axios";
 
-const Mybids = () => {
+
+const BidRequest = () => {
     const {user} = useAuth();
-     const [bidJobs, setBidJobs] = useState([]);
-    const url = `http://localhost:5000/api/user-email?email=${user?.email}`
-    
-    useEffect(() => {
-        axios.get(url)
-        .then(data => {
-            setBidJobs(data.data)
-        })
-    },[url])
+    const [bidJobs, setBidJobs] = useState([]);
+   const url = `http://localhost:5000/api/buyer-email?email=${user?.email}`
+   
+   useEffect(() => {
+       axios.get(url)
+       .then(data => {
+           setBidJobs(data.data)
+       })
+   },[url])
 
-    console.log(bidJobs);
+   console.log(bidJobs);
     return (
         <div className="bg-orange-50 py-20 min-h-[80vh]">
-        <h2 className="text-5xl">My Bits: {}</h2>
+        <h2 className="text-5xl"> Bits Requests: {}</h2>
         <div className=" w-10/12 mx-auto bg-white rounded-lg">
             <table className=" text-center table w-full">
                 {/* head */}
@@ -29,7 +30,8 @@ const Mybids = () => {
                         <th>Email</th>
                         <th>Deadline</th>
                         <th>Status</th>
-                        <th>Complete</th>
+                        <th>Accept</th>
+                        <th>Reject</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,10 +39,11 @@ const Mybids = () => {
                     {
                         bidJobs?.map(job => <tr key={job._id}>
                             <td>{job.title}</td>
-                            <td>{job.userEmail}</td>
+                            <td>{job.buyerEmail}</td>
                             <td>{job.date}</td>
                             <td>{job.status}</td>
-                            <td>complete</td>
+                            <td>Accept</td>
+                            <td>Reject</td>
                         </tr>)
                     }
 
@@ -52,4 +55,4 @@ const Mybids = () => {
     );
 };
 
-export default Mybids;
+export default BidRequest;
