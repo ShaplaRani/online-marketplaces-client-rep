@@ -29,7 +29,7 @@ const Mybids = () => {
                         <th>Email</th>
                         <th>Deadline</th>
                         <th>Status</th>
-                        <th>Complete</th>
+                        <th >Complete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,7 +40,12 @@ const Mybids = () => {
                             <td>{job.userEmail}</td>
                             <td>{job.date}</td>
                             <td>{job.status}</td>
-                            <td>complete</td>
+                            <th className=" border text-lg">
+                                {
+                                  job.status == 'progress' ? <button>Complete</button> :
+                                   <button disabled className="py-1 px-2 rounded-lg">Complete</button> 
+                                }
+                            </th>
                         </tr>)
                     }
 

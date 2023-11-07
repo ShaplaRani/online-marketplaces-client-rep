@@ -1,13 +1,26 @@
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import './job.css'
+import { useEffect, useState } from "react";
 
 
 const JobDetails = () => {
+
+    const [data, setDate] = useState(true)
     const {user} = useAuth();
     const job = useLoaderData()
     const {title,email, date,maxPrice} = job;
-    const handleBit = e => {
+
+     useEffect(() => {
+        if(user.email == email){
+            setDate(true)
+        }else{
+            setDate(false)
+        }
+   
+     },[user])
+     const handleBit = e => {
         e.preventDefault();
         
         const form = e.target;
@@ -27,6 +40,7 @@ const JobDetails = () => {
             
         }
         console.log(addJob);
+       
         fetch('http://localhost:5000/api/user/create-bitJob', {
             method: 'POST',
             headers: {
@@ -96,8 +110,8 @@ const JobDetails = () => {
                     </div>
                     
                      
-                    <div className="w-full text-white mt-6 py-2 text-center rounded-lg text-xl font-semibold bg-emerald-400">
-                         <button className={user.email === email? 'disabled':"enabled"}>
+                    <div className=" ">
+                         <button disabled={data} className="w-full text-white mt-6 py-2 text-center rounded-lg text-xl font-semibold bg-emerald-400">
                             Bid On The Project</button>
                     </div>
                 </form> 
@@ -111,3 +125,5 @@ const JobDetails = () => {
 };
 
 export default JobDetails;
+
+// className={user.email == email?'disabled:':''}
