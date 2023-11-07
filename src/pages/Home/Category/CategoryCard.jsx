@@ -8,7 +8,7 @@ const CategoryCard = ({category}) => {
     // const truncatedDescription = (description.length).slice(0, 20);
     return (
         <div>
-            <div className="card bg-orange-100 ">
+            <div className="card bg-orange-200 shadow-2xl  ">
                 <div className="card-body">
                 <h2 className="text-xl font-semibold text-black">Title: {title}</h2>
                     <p className='font-medium text-lg text-black'>Deadline: {date}</p>
@@ -17,9 +17,17 @@ const CategoryCard = ({category}) => {
                     {/* {
                         description.length.slice(0,20)<p className='font-normal text-base text-black leading-relaxed'>{description}</p>
                     } */}
-                     <p className='font-normal text-base text-black leading-relaxed'>
+                     {/* <p className='font-normal text-base text-black leading-relaxed'>
                             {description}
-                       </p>
+                       </p> */}
+                       <div className=''>
+                      {
+                        description.length > 90 ? <p className="mt-3 block  text-lg font-normal  text-gray-700 antialiased">
+                         {description.slice(0, 90)}.....
+                        </p> :
+                         <p>{description}</p>
+                        }
+                    </div>
                     
                     <div className="card-actions justify-end">
                         <Link to={`/jobs/${_id}`}>

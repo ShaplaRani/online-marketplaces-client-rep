@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
-import logo from '../../assets/logo.jpeg'
+import logo from '../../assets/logo2.png'
 import swal from "sweetalert";
 
 const Navbar = () => {
@@ -79,7 +79,7 @@ const Navbar = () => {
 </>
 
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto ">
              <div className="navbar bg-base-100 mt-5">
   <div className="navbar-start">
     <div className="dropdown">
@@ -93,9 +93,9 @@ const Navbar = () => {
         
       </ul>
     </div>
-     <div className="flex gap-0">
-     <img className="w-40 h-14 border " src={logo} alt="" />
-    <a className="btn btn-ghost normal-case text-xl ">Bit Jobs</a>
+     <div className="flex gap-0 items-center">
+      <img className="w-20 h-20  " src={logo} alt="" />
+       <a className=" hidden md:block  font-bold text-2xl ">Bit Jobs</a>
      </div>
   </div>
   <div className="navbar-center hidden lg:flex">
@@ -103,17 +103,7 @@ const Navbar = () => {
         {
             navLinks
         }
-      {/* <li><a>Item 1</a></li>
-      <li tabIndex={0}>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li> */}
+     
     </ul>
   </div>
   <div className="navbar-end">
@@ -127,7 +117,8 @@ const Navbar = () => {
                          <p className="text-lg font-medium mr-3">{user.displayName}</p>
                          </div>
                      
-                        <button onClick={handleSignOut} className="btn bg-blue-700 text-base text-white">Sign Out</button>
+                        <button onClick={handleSignOut} className="btn bg-blue-700 text-base
+                         text-white">Sign Out</button>
                         
                     </div> :
                         <Link to="/login"> <button 

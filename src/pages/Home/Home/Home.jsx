@@ -1,5 +1,6 @@
 import Banner from "../Banner/Banner";
 import Category from "../Category/Category";
+import FindWork from "../FindWork/FindWork";
 import Service from "../Service/Service";
 
 
@@ -9,6 +10,7 @@ const Home = () => {
             <Banner></Banner>
             <Category></Category>
             <Service></Service>
+            <FindWork></FindWork>
         </div>
     );
 };

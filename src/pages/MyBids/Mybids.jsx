@@ -6,16 +6,18 @@ const Mybids = () => {
     const {user} = useAuth();
      const [bidJobs, setBidJobs] = useState([]);
      const [isTrue, setIsTrue] = useState(null)
+     //http://localhost:5000
     const url = `http://localhost:5000/api/user-email?email=${user?.email}`
     
     useEffect(() => {
-        axios.get(url)
+        axios.get(url,{withCredentials:true})
         .then(data => {
             setBidJobs(data.data)
         })
     },[url])
 
     console.log(bidJobs);
+    console.log(isTrue);
     return (
         <div className="bg-orange-50 py-20 min-h-[80vh]">
         <h2 className="text-5xl">My Bits: {}</h2>
@@ -31,6 +33,7 @@ const Mybids = () => {
                         <th>Deadline</th>
                         <th>Status</th>
                         <th >Complete</th>
+                        <th >id</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,14 +46,17 @@ const Mybids = () => {
                             <td>{job.status}</td>
                             <th className=" border text-lg">
                                 {
-                                  job.status == 'in progress' ?
+                                  job.status == 'in progress'?
                                    <button disabled={false}
-                                    onClick={() => setIsTrue(true)}
-                                    className={isTrue?'hidden':''}
-                                     >Complete</button> :
-                                   <button disabled ={true} className="py-1 px-2 rounded-lg">Complete</button> 
+                                    onClick={() => setIsTrue(job._id)}
+                                    
+                                     >{isTrue == job._id?'':'Complete'}</button> :
+                                   <button disabled ={true} className="py-1 px-2 rounded-lg">
+                                     Complete
+                                   </button> 
                                 }
                             </th>
+                            <td>{job._id}</td>
                         </tr>)
                     }
 
@@ -63,3 +69,5 @@ const Mybids = () => {
 };
 
 export default Mybids;
+
+// className={isTrue?'hidden':''}

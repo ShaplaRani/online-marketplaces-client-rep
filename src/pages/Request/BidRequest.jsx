@@ -11,7 +11,7 @@ const BidRequest = () => {
    const url = `http://localhost:5000/api/buyer-email?email=${user?.email}`
 
    useEffect(() => {
-    axios.get(url)
+    axios.get(url,{withCredentials:true})
     .then(data => {
         setBidJobs(data.data)
     })
