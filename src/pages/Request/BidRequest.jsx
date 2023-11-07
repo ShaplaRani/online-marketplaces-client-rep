@@ -1,19 +1,53 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const BidRequest = () => {
     const {user} = useAuth();
     const [bidJobs, setBidJobs] = useState([]);
    const url = `http://localhost:5000/api/buyer-email?email=${user?.email}`
-   
+
    useEffect(() => {
-       axios.get(url)
-       .then(data => {
-           setBidJobs(data.data)
-       })
-   },[url])
+    axios.get(url)
+    .then(data => {
+        setBidJobs(data.data)
+    })
+},[url])
+
+
+   const handleAccept = (id) => {
+        console.log(id);
+        fetch(`http://localhost:5000/api/buyer-email/${id}`,{
+            method:'PATCH',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify({status: "in progress"})
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log('data',data);
+            if(data.modifiedCount > 0) {
+                //update state
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Job Status Update Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+                const remaining = bidJobs.filter(booking => booking._id != id);
+                 const updated =  bidJobs.find( booking => booking._id == id);
+                 updated.status = "in progress";
+
+                const newJobs = [updated, ...remaining];
+                setBidJobs(newJobs);
+            }
+        })
+   }
+   
+  
 
    console.log(bidJobs);
     return (
@@ -42,8 +76,8 @@ const BidRequest = () => {
                             <td>{job.buyerEmail}</td>
                             <td>{job.date}</td>
                             <td>{job.status}</td>
-                            <td>Accept</td>
-                            <td>Reject</td>
+                            <th><button onClick={() =>handleAccept(job._id)} className="">Accept</button></th>
+                            <th><button>Reject</button></th>
                         </tr>)
                     }
 
