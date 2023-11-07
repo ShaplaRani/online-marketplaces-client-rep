@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 const BidRequest = () => {
     const {user} = useAuth();
     const [bidJobs, setBidJobs] = useState([]);
+    const [isTrue, setIsTrue] = useState(null)
    const url = `http://localhost:5000/api/buyer-email?email=${user?.email}`
 
    useEffect(() => {
@@ -28,7 +29,7 @@ const BidRequest = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log('data',data);
+           // console.log('data',data);
             if(data.modifiedCount > 0) {
                 //update state
                 Swal.fire({
@@ -37,17 +38,50 @@ const BidRequest = () => {
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 })
-                const remaining = bidJobs.filter(booking => booking._id != id);
-                 const updated =  bidJobs.find( booking => booking._id == id);
+                const remaining = bidJobs.filter(job => job._id != id);
+                 const updated =  bidJobs.find( job => job._id == id);
                  updated.status = "in progress";
 
                 const newJobs = [updated, ...remaining];
+            
                 setBidJobs(newJobs);
+                setIsTrue(true);
             }
         })
    }
-   
-  
+
+   const handleReject = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/api/buyer-email/${id}`,{
+        method:'PATCH',
+        headers: {
+            'content-type' : 'application/json'
+        },
+        body: JSON.stringify({status: "canceled"})
+    })
+    .then(res => res.json())
+    .then(data => {
+        //console.log('data',data);
+        if(data.modifiedCount > 0) {
+            //update state
+            Swal.fire({
+                title: 'Success!',
+                text: 'Job Status Update Successfully',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+            })
+            const remaining = bidJobs.filter(job => job._id !== id);
+             const updated =  bidJobs.find( job => job._id === id);
+             updated.status = "canceled";
+
+            const newJobs = [updated, ...remaining];
+            console.log('new', newJobs);
+            setBidJobs(newJobs);
+            setIsTrue(true);
+           
+        }
+    })
+}
 
    console.log(bidJobs);
     return (
@@ -66,6 +100,7 @@ const BidRequest = () => {
                         <th>Status</th>
                         <th>Accept</th>
                         <th>Reject</th>
+                        <th>ID</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,8 +111,12 @@ const BidRequest = () => {
                             <td>{job.buyerEmail}</td>
                             <td>{job.date}</td>
                             <td>{job.status}</td>
-                            <th><button onClick={() =>handleAccept(job._id)} className="">Accept</button></th>
-                            <th><button>Reject</button></th>
+                            <th><button onClick={() =>handleAccept(job._id)}
+                           >Accept</button></th>
+
+                            <th><button onClick={() =>handleReject(job._id)}
+                             >Reject</button></th>
+                            <td>{job._id}</td>
                         </tr>)
                     }
 

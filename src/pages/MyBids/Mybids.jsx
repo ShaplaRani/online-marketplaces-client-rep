@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 const Mybids = () => {
     const {user} = useAuth();
      const [bidJobs, setBidJobs] = useState([]);
+     const [isTrue, setIsTrue] = useState(null)
     const url = `http://localhost:5000/api/user-email?email=${user?.email}`
     
     useEffect(() => {
@@ -42,7 +43,11 @@ const Mybids = () => {
                             <td>{job.status}</td>
                             <th className=" border text-lg">
                                 {
-                                  job.status == 'in progress' ? <button disabled={false} >Complete</button> :
+                                  job.status == 'in progress' ?
+                                   <button disabled={false}
+                                    onClick={() => setIsTrue(true)}
+                                    className={isTrue?'hidden':''}
+                                     >Complete</button> :
                                    <button disabled ={true} className="py-1 px-2 rounded-lg">Complete</button> 
                                 }
                             </th>
