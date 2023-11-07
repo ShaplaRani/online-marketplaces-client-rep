@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import './job.css'
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 
 const JobDetails = () => {
@@ -64,6 +65,9 @@ const JobDetails = () => {
     }
     return (
         <div className="bg-orange-50">
+            <Helmet>
+                <title>Bid Jobs | Job Details {job._id}</title>
+            </Helmet>
            <div className="lg:w-10/12 mx-auto py-32 px-4 md:px-8 lg:px-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
                 <div className="bg-white col-span-7 py-14 rounded-lg">
                 <form onSubmit={handleBit} className=" w-4/5 md:w-3/4 lg:w-3/4 mx-auto">

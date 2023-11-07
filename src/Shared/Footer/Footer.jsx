@@ -63,7 +63,7 @@ const Footer = () => {
                 <div className="space-y-2 mt-7 md:mt-0" data-aos="fade-up"
                     data-aos-easing="ease-out-cubic"
                     data-aos-duration="1000">
-                    
+                  
                    <p className="text-center">Contact: <a href="mailto:contact@bidJobs.com">contact@bidJobs.com</a></p>
                 <p className="text-center">Address: 123 Main Street, City, Country</p>
 

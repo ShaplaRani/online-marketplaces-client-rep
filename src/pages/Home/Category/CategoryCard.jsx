@@ -8,7 +8,7 @@ const CategoryCard = ({category}) => {
     // const truncatedDescription = (description.length).slice(0, 20);
     return (
         <div>
-            <div className="card bg-orange-200 shadow-2xl  ">
+            <div className="card bg-orange-200 shadow-2xl h-[430px] ">
                 <div className="card-body">
                 <h2 className="text-xl font-semibold text-black">Title: {title}</h2>
                     <p className='font-medium text-lg text-black'>Deadline: {date}</p>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const BidRequest = () => {
@@ -86,6 +87,9 @@ const BidRequest = () => {
    console.log(bidJobs);
     return (
         <div className="bg-orange-50 py-20 min-h-[80vh]">
+            <Helmet>
+                <title>Bid Jobs | Bid Request</title>
+            </Helmet>
         <h2 className="text-5xl"> Bits Requests: {}</h2>
         <div className=" w-10/12 mx-auto bg-white rounded-lg">
             <table className=" text-center table w-full">

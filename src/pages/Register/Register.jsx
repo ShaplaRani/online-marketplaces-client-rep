@@ -7,6 +7,7 @@ import { updateProfile } from "firebase/auth";
 
 import { FaRegEnvelopeOpen } from 'react-icons/fa';
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   
@@ -73,6 +74,9 @@ const Register = () => {
     }
     return (
         <div className=" bg-orange-50 py-20">
+              <Helmet>
+                <title>Bid Jobs | Register</title>
+            </Helmet>
               <div className="">
                 <p className="flex justify-center"> 
                  <FaRegEnvelopeOpen className=" text-2xl font-bold text-emerald-400"></FaRegEnvelopeOpen></p>

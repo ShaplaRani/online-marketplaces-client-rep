@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const Mybids = () => {
     const {user} = useAuth();
@@ -20,6 +21,9 @@ const Mybids = () => {
     console.log(isTrue);
     return (
         <div className="bg-orange-50 py-20 min-h-[80vh]">
+            <Helmet>
+                <title>Bid Jobs | My Bids</title>
+            </Helmet>
         <h2 className="text-5xl">My Bits: {}</h2>
         <div className=" w-10/12 mx-auto bg-white rounded-lg">
             <table className=" text-center table w-full">

@@ -9,6 +9,7 @@ import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaRegEnvelopeOpen } from 'react-icons/fa';
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
    const Login = () => {
 
     const {signInUser,signInWithGoogle,signInWithGithub} = useContext(AuthContext)
@@ -60,7 +61,9 @@ import Swal from "sweetalert2";
 
     return (
         <div className="bg-orange-50 py-20 ">
-
+                <Helmet>
+                <title>Bid Jobs | Login</title>
+            </Helmet>
               <p className="flex justify-center"> 
                  <FaRegEnvelopeOpen className=" text-2xl font-bold text-emerald-400"></FaRegEnvelopeOpen></p>
                <h3 className="text-2xl md:text-3xl mt-3  text-center font-medium md:font-semibold

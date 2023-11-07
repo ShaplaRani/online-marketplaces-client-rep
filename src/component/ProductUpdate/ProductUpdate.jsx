@@ -3,6 +3,7 @@
 import axios from "axios";
 
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const ProductUpdate = () => {
@@ -61,6 +62,9 @@ const ProductUpdate = () => {
      }
     return (
         <div>
+            <Helmet>
+                <title>Bid Jobs | Update Job {_id}</title>
+            </Helmet>
             <h3>Update Job</h3>
             <div className="hero p-14 bg-orange-100 my-20" >
 

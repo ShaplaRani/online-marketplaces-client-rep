@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 
 const AddJob = () => {
@@ -49,6 +50,9 @@ const AddJob = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Bid Jobs | Add Job</title>
+            </Helmet>
             <h3>Add product</h3>
             <div className="hero p-14 bg-orange-100 my-20" >
 

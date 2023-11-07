@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import PostedJobsCard from "./PostedJobsCard";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const PostedJobs = () => {
@@ -48,6 +49,9 @@ const PostedJobs = () => {
     }
     return (
         <div className="container mx-auto my-20">
+            <Helmet>
+                <title>Bid Jobs | Posted Jobs</title>
+            </Helmet>
             <h2>PostedJobs</h2>
             <div className="grid grid-cols-2 lg:grid-cols-2 gap-4">
                 {
