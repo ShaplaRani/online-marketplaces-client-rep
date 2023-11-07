@@ -1,15 +1,12 @@
-import { FaGithub } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
+import { PiTwitterLogoLight } from "react-icons/pi";
+import { AiOutlineInstagram } from "react-icons/ai";
 import { BiLogoFacebook } from "react-icons/bi";
 import logo from '../../assets/logo2.png'
 const Footer = () => {
     return (
-        <div className=" bg-orange-100 py-24 ">
-            <div className="w-10/12  mx-auto flex justify-between mb-7" >
-                {/* <p className="uppercase font-semibold md:font-bold md:text-2xl text-orange-500"
-                    data-aos="zoom-in"
-                    data-aos-easing="ease-out-cubic"
-                    data-aos-duration="1000">The site of our campaigns</p> */}
+        <div className=" bg-orange-100 pt-24 pb-8">
+            <div className="w-10/12  mx-auto flex justify-between items-center mb-7 " >
+               
                     <div className="flex items-center">
                        <img className="w-24 h-24" src={logo} alt="" />
                        <h2 className="text-2xl font-semibold">Bit Jobs</h2>
@@ -17,19 +14,20 @@ const Footer = () => {
                 <div className="flex gap-2 md:gap-4" data-aos="zoom-in"
                     data-aos-easing="ease-out-cubic"
                     data-aos-duration="1000">
-                    <div className="w-7 h-7 items-center rounded-full flex justify-center bg-white">
-                        <a className="" href=""><BiLogoFacebook className="text-blue-500"></BiLogoFacebook></a>
+                    <div className="w-10 h-10 items-center rounded-full flex justify-center bg-white">
+                        <a className="" href="https://facebook.com/yourwebsite"><BiLogoFacebook className="text-blue-500 text-xl"></BiLogoFacebook></a>
                     </div>
-                    <div className="w-7 h-7 items-center rounded-full flex justify-center bg-white">
-                        <a href=""><FaGithub className="bg-white"></FaGithub></a>
+                    <div className="w-10 h-10 items-center rounded-full flex justify-center bg-white">
+                        <a href="https://www.instagram.com/yourwebsite"><AiOutlineInstagram className=
+                        "text-blue-500 text-xl"></AiOutlineInstagram></a>
                     </div>
-                    <div className="w-7 h-7 items-center rounded-full flex justify-center bg-white">
-                        <a href=""><FcGoogle></FcGoogle></a>
+                    <div className="w-10 h-10 items-center rounded-full flex justify-center bg-white">
+                        <a href=" https://twitter.com/yourwebsite"><PiTwitterLogoLight className="text-xl text-blue-500"></PiTwitterLogoLight></a>
                     </div>
                 </div>
 
             </div>
-            <footer className="  grid grid-cols-2 md:grid-cols-4 justify-between text-black w-10/12 
+            <footer className="pb-20  grid grid-cols-2 md:grid-cols-4 justify-between text-black w-10/12 
              mx-auto ">
                 <nav className="text-base font-medium text-gray-700" data-aos="fade-up"
                     data-aos-easing="ease-out-cubic"
@@ -46,11 +44,11 @@ const Footer = () => {
                     data-aos-duration="1000">
                     <header className="footer-title  text-gray-900 opacity-100">Site links</header>
                     <p className="link link-hover">Home</p>
-                    <p className="link link-hover">Register</p>
-                    <p className="link link-hover">About us</p>
-                    <p className="link link-hover">Contact us</p>
-                    <p className="link link-hover">Login</p>
-                    <p className="link link-hover">Sign Out</p>
+                    <p className="link link-hover">My Bids</p>
+                    <p className="link link-hover">Add Job</p>
+                    <p className="link link-hover">My Posted Jobs</p>
+                    <p className="link link-hover">Bid Request</p>
+                    
 
 
                 </nav>
@@ -65,17 +63,17 @@ const Footer = () => {
                 <div className="space-y-2 mt-7 md:mt-0" data-aos="fade-up"
                     data-aos-easing="ease-out-cubic"
                     data-aos-duration="1000">
-                    <h3 className="uppercase font-bold text-xl md:text-lg lg:text-xl text-orange-500">subscribe now</h3>
-                    <div className="form-control">
-
-                        <input type="email" placeholder="email" name="email" className="input input-bordered"
-                            required />
-                        <input type="submit" value="SEND" className="input text-white input-bordered mt-2 bg-slate-800" />
-                    </div>
-
+                    
+                   <p className="text-center">Contact: <a href="mailto:contact@bidJobs.com">contact@bidJobs.com</a></p>
+                <p className="text-center">Address: 123 Main Street, City, Country</p>
 
                 </div>
             </footer>
+            <hr />
+            <div className="mt-2">
+                <p className="text-center">&copy; 2023 Bid Jobs. All rights reserved.</p>
+                
+            </div>
         </div>
     );
 };
