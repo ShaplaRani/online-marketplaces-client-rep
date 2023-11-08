@@ -60,15 +60,15 @@ import { Helmet } from "react-helmet-async";
       }
 
     return (
-        <div className="bg-orange-50 py-20 ">
+        <div className="bg-blue-100 py-20 container mx-auto rounded-lg my-20 ">
                 <Helmet>
                 <title>Bid Jobs | Login</title>
             </Helmet>
               <p className="flex justify-center"> 
-                 <FaRegEnvelopeOpen className=" text-2xl font-bold text-emerald-400"></FaRegEnvelopeOpen></p>
+                 <FaRegEnvelopeOpen className=" text-2xl font-bold text-blue-700"></FaRegEnvelopeOpen></p>
                <h3 className="text-2xl md:text-3xl mt-3  text-center font-medium md:font-semibold
-                 text-emerald-400 "> Login your account</h3>
-            <div className="w-5/6 lg:w-2/5 bg-white rounded-lg shadow-md py-14 m-auto mt-10 ">
+                 text-blue-700 "> Login your account</h3>
+            <div className="w-5/6 lg:w-4/5 bg-white rounded-lg shadow-md py-14 m-auto mt-10 ">
                 
                 <form onSubmit={handleLogin} className=" w-4/5 md:w-3/4 lg:w-3/4 mx-auto">
                     
@@ -121,7 +121,7 @@ import { Helmet } from "react-helmet-async";
                  </div>
                 <p className=" w-4/5 md:w-3/4 lg:w-3/4 mx-auto text-center mt-9 text-base font-semibold "> 
                 Do not Have An Account ? Please <Link to="/register"
-                 className="text-emerald-400"> Register</Link></p>
+                 className="text-blue-700"> Register</Link></p>
             </div>
 
          </div>

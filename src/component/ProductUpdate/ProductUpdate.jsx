@@ -7,19 +7,7 @@ import { Helmet } from "react-helmet-async";
 
 
 const ProductUpdate = () => {
-    // const [product, setProduct] = useState({})
-    // const id = useParams()
-    // console.log(id);
-    // useEffect(() => {
-    //     axios.get('http://localhost:5000/api/email-product')
-    //     .then(data => {
-    //         console.log(data.data);
-    //         const updateProduct = data?.data?.find(singleProduct =>console.log( singleProduct._id == id))
-    //          console.log(updateProduct);
-    //         setProduct(updateProduct)
-    //     })
-    // },[id])
-    // console.log(product);
+    
      const loaderProduct = useLoaderData();
     console.log(loaderProduct);
 
@@ -65,25 +53,25 @@ const ProductUpdate = () => {
             <Helmet>
                 <title>Bid Jobs | Update Job {_id}</title>
             </Helmet>
-            <h3>Update Job</h3>
-            <div className="hero p-14 bg-orange-100 my-20" >
+            <h3 className="text-center text-3xl font-bold text-blue-700 mt-14 ">Update Job</h3>
+            <div className="hero p-14 bg-blue-100 mb-20 mt-10 container mx-auto rounded-lg" >
 
                 <form onSubmit={handleUpdateJob} className="card-body w-full space-y-4">
                     {/* email and job tile */}
-                    <div className="md:flex gap-4">
+                    <div className="md:flex md:gap-4">
                        {/* Email */}
                        <div className="form-control flex-1">
                             <input type="email" placeholder="Your Email" defaultValue={email} 
                             name="email" className="input input-bordered" required readOnly />
                         </div>
                         {/* title */}
-                        <div className="form-control flex-1">
+                        <div className="form-control flex-1 mt-5 md:mt-0">
                             <input type="text" placeholder="Job Title" defaultValue={title} name="title" className="input input-bordered" required />
                         </div>
                     </div>
 
                     {/* category and date */}
-                    <div className="md:flex gap-4">
+                    <div className="md:flex md:gap-4">
                         {/* category */}
                         
                         <div className="form-control flex-1">
@@ -95,19 +83,19 @@ const ProductUpdate = () => {
                         </div>
                        
                         {/* date */}
-                        <div className="form-control flex-1">
+                        <div className="form-control flex-1 mt-5 md:mt-0">
                             <input type="date" placeholder="Deadline"defaultValue={date} name="date" className="input input-bordered" required />
                         </div>
                     </div>
                       {/* maximum and minimum price */}
-                    <div className="md:flex gap-4">
+                    <div className="md:flex md:gap-4">
                       
                         {/* minimum */}
                         <div className="form-control flex-1">
                             <input type="text" defaultValue={minPrice} placeholder="Minimum Price" name="minPrice" className="input input-bordered" required />
                         </div>
                          {/* maximum */}
-                       <div className="form-control flex-1">
+                       <div className="form-control flex-1 mt-5 md:mt-0">
                             <input type="text" defaultValue={maxPrice} placeholder="Maximum Price" name="maxPrice" className="input input-bordered" required />
                         </div>
                     </div>

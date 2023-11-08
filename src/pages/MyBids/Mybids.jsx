@@ -6,7 +6,10 @@ import { Helmet } from "react-helmet-async";
 const Mybids = () => {
     const {user} = useAuth();
      const [bidJobs, setBidJobs] = useState([]);
-     const [isTrue, setIsTrue] = useState(null)
+     //const [isTrue, setIsTrue] = useState(null)
+     const [loader, setLoader] = useState(true)
+
+
      //http://localhost:5000
     const url = `http://localhost:5000/api/user-email?email=${user?.email}`
     
@@ -14,18 +17,59 @@ const Mybids = () => {
         axios.get(url,{withCredentials:true})
         .then(data => {
             setBidJobs(data.data)
+            setLoader(false)
         })
     },[url])
+     
+    const handleComplete = (id) => {
+       // console.log(id);
+        fetch(`http://localhost:5000/api/delete-complete/${id}`,{
+            method:'PATCH',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify({complete: true})
+        })
+        .then(res => res.json())
+        .then(data => {
+           // console.log('data',data);
+            if(data.modifiedCount > 0) {
+               
+                const remaining = bidJobs.filter(job => job._id != id);
+                 const updated =  bidJobs.find( job => job._id == id);
+                 updated.complete = true;
 
-    console.log(bidJobs);
-    console.log(isTrue);
+                const newJobs = [ ...remaining, updated];
+            
+                setBidJobs(newJobs);
+                console.log('delete');
+                //setIsTrue(true);
+            }
+        })
+   }
+
+//sorting
+    const  handleSort =() => {
+        axios.get(`http://localhost:5000/api/user-email?email=${user?.email}&sortField=status&sortOrder=asc`,
+        {withCredentials:true})
+        .then(data => {
+            console.log('sort');
+            setBidJobs(data.data)
+            setLoader(false)
+        })
+
+    }
+    
     return (
-        <div className="bg-orange-50 py-20 min-h-[80vh]">
+        <div className="bg-blue-100 container mx-auto py-20 min-h-[80vh] my-20 rounded-lg">
             <Helmet>
                 <title>Bid Jobs | My Bids</title>
             </Helmet>
-        <h2 className="text-5xl">My Bits: {}</h2>
-        <div className=" w-10/12 mx-auto bg-white rounded-lg">
+        <h2 className="text-5xl text-center mb-10 text-blue-700 font-bold">My Bids </h2>
+           <div className="flex justify-end mr-10 mb-7">
+              <button onClick={ handleSort} className="btn bg-blue-700 text-white">Sorting</button>
+           </div>
+        <div className=" w-11/12 mx-auto bg-white rounded-lg">
             <table className=" text-center table w-full">
                 {/* head */}
                 <thead className="bg-emerald-400 text-lg font-medium text-white">
@@ -37,13 +81,13 @@ const Mybids = () => {
                         <th>Deadline</th>
                         <th>Status</th>
                         <th >Complete</th>
-                        <th >id</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
 
                     {
-                        bidJobs?.map(job => <tr key={job._id}>
+                         loader?<span className="loading loading-spinner flex justify-center text-primary"></span> :   bidJobs?.map(job => <tr key={job._id}>
                             <td>{job.title}</td>
                             <td>{job.userEmail}</td>
                             <td>{job.date}</td>
@@ -52,15 +96,15 @@ const Mybids = () => {
                                 {
                                   job.status == 'in progress'?
                                    <button disabled={false}
-                                    onClick={() => setIsTrue(job._id)}
+                                    onClick={() => handleComplete(job._id)}
                                     
-                                     >{isTrue == job._id?'':'Complete'}</button> :
+                                     >{job.complete?'':'Complete'}</button> :
                                    <button disabled ={true} className="py-1 px-2 rounded-lg">
                                      Complete
                                    </button> 
                                 }
                             </th>
-                            <td>{job._id}</td>
+                            
                         </tr>)
                     }
 

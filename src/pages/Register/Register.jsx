@@ -73,17 +73,17 @@ const Register = () => {
         })
     }
     return (
-        <div className=" bg-orange-50 py-20">
+        <div className=" bg-blue-100 py-20 container mx-auto rounded-lg my-20">
               <Helmet>
                 <title>Bid Jobs | Register</title>
             </Helmet>
               <div className="">
                 <p className="flex justify-center"> 
-                 <FaRegEnvelopeOpen className=" text-2xl font-bold text-emerald-400"></FaRegEnvelopeOpen></p>
-               <h3 className="text-2xl md:text-3xl mt-3  text-center font-medium md:font-semibold
-                 text-emerald-400 "> Register your account</h3>
+                 <FaRegEnvelopeOpen className=" text-2xl font-bold text-blue-700"></FaRegEnvelopeOpen></p>
+               <h3 className="text-2xl md:text-3xl mt-3  text-center font-medium md:font-bold
+                 text-blue-700 "> Register your account</h3>
              </div>
-            <div className="w-5/6 lg:w-2/5 bg-white  rounded-lg shadow-md py-10 m-auto mt-10 ">
+            <div className="w-5/6 lg:w-4/5 bg-white  rounded-lg shadow-md py-10 m-auto mt-10 ">
                
                 <form onSubmit={handleRegister} className="w-4/5 md:w-3/4 lg:w-3/4 mx-auto">
                     <div className="form-control">
@@ -137,7 +137,7 @@ const Register = () => {
                 </form>
                 <p className=" w-4/5 md:w-3/4 lg:w-3/4 m-auto
                  text-center my-7 text-base font-semibold "> Already have an account ? Please <Link to="/login"
-                 className="text-emerald-400"> Login</Link></p>
+                 className="text-blue-700"> Login</Link></p>
             </div>
         </div>
     );

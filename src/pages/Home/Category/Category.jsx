@@ -16,7 +16,7 @@ const Category = () => {
 
     const handleCategory = category => {
         console.log(category);
-        const sameCategory = allCategory.filter(data => data.category === category)
+        const sameCategory = allCategory.filter(data => data.category.toLowerCase() === category.toLowerCase())
         setCategoryDate(sameCategory);
     }
 console.log(categoryDate);
@@ -28,7 +28,7 @@ console.log(categoryDate);
       <Tab onClick={() =>handleCategory('Web Development')}className=" py-6 rounded-l-xl px-2 md:px-4 lg:px-10 focus:bg-white bg-gray-200 border font-bold text-lg md:text-xl capitalize focus:text-emerald-400">web development</Tab>
       <Tab onClick={() =>handleCategory('Digital Marketing')} className=" py-6 px-2 md:px-4 lg:px-10 focus:bg-white bg-gray-200 border capitalize text-lg md:text-xl font-bold focus:text-emerald-400">digital marketing</Tab>
 
-      <Tab onClick={() =>handleCategory('graphics design')}className=" px-2 py-6 md:px-4 lg:px-10 rounded-r-xl focus:bg-white bg-gray-200 border  font-bold text-lg md:text-xl capitalize focus:text-emerald-400">graphics design</Tab>
+      <Tab onClick={() =>handleCategory('Graphics Design')}className=" px-2 py-6 md:px-4 lg:px-10 rounded-r-xl focus:bg-white bg-gray-200 border  font-bold text-lg md:text-xl capitalize focus:text-emerald-400">graphics design</Tab>
 
     </TabList>
 
@@ -49,7 +49,7 @@ console.log(categoryDate);
        </div>
     </TabPanel>
     <TabPanel >
-      <h2>Any content 3</h2>
+     
       <div className='grid grid-cols-1 mg:grid-cols-2 lg:grid-cols-4 gap-4'>
           {
             categoryDate.length >= 0 && categoryDate.map(category => <CategoryCard key={category.id} category ={category}></CategoryCard>)

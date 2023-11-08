@@ -11,7 +11,7 @@ const JobDetails = () => {
     const [data, setDate] = useState(true)
     const {user} = useAuth();
     const job = useLoaderData()
-    const {title,email, date,maxPrice} = job;
+    const {title,email, date,maxPrice,minPrice,description,category} = job;
 
      useEffect(() => {
         if(user.email == email){
@@ -37,7 +37,9 @@ const JobDetails = () => {
             date,
             price,
             title,
-            status:'pending'
+            status:'pending',
+            complete:false,
+            request:false
             
         }
         console.log(addJob);
@@ -64,7 +66,7 @@ const JobDetails = () => {
             })
     }
     return (
-        <div className="bg-orange-50">
+        <div className="bg-blue-100 container mx-auto my-20 rounded-lg">
             <Helmet>
                 <title>Bid Jobs | Job Details {job._id}</title>
             </Helmet>
@@ -120,8 +122,22 @@ const JobDetails = () => {
                     </div>
                 </form> 
                 </div >
-                <div className="bg-white col-span-5">
-                      <h2>Description</h2>
+                <div className="bg-white col-span-5 rounded-lg pt-10">
+                  
+                    <div className='card-body  '>
+                    <h2 className="text-xl font-bold ">Title: {title}</h2>
+                    <h2 className="text-xl font-semibold ">Category: {category}</h2>
+                    <p className='font-medium text-lg '>Deadline: {date}</p>
+                    <p className='font-medium text-lg '> Price: ${minPrice} - {maxPrice}$ per hour</p>
+                    {/* <p className='font-medium text-lg '>Maximum Price: {maxPrice} $</p>
+                    <p className='font-medium text-lg '>Minimum Price: {minPrice} $</p> */}
+                    
+                </div>
+                <div className='card-body'>
+                      
+                         <p>{description}</p>
+                        
+                       </div>
                  </div>
            </div>
         </div>

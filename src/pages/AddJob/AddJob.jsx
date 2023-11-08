@@ -49,12 +49,12 @@ const AddJob = () => {
             })
     }
     return (
-        <div>
+        <div className="container mx-auto">
             <Helmet>
                 <title>Bid Jobs | Add Job</title>
             </Helmet>
-            <h3>Add product</h3>
-            <div className="hero p-14 bg-orange-100 my-20" >
+            <h3 className="text-center mt-20 text-2xl font-bold text-blue-700">  Add Job</h3>
+            <div className="hero p-14 bg-blue-100 mb-20 mt-10 rounded-lg " >
 
                 <form onSubmit={handleAddJob} className="card-body w-full space-y-4">
                     {/* email and job tile */}

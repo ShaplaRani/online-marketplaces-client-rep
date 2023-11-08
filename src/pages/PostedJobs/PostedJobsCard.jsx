@@ -8,15 +8,12 @@ const PostedJobsCard = ({product, handleDelete}) => {
    
     return (
         <div>
-        <div className="card bg-orange-100 ">
+        <div className="card bg-blue-100 shadow-xl ">
             <div className="card-body">
             <h2 className="text-xl font-semibold text-black">Title: {title}</h2>
                 <p className='font-medium text-lg text-black'>Deadline: {date}</p>
-                <p className='font-medium text-lg text-black'>Maximum Price: {maxPrice} $</p>
-                <p className='font-medium text-lg text-black'>Minimum Price: {minPrice} $</p>
-                {/* {
-                    description.length.slice(0,20)<p className='font-normal text-base text-black leading-relaxed'>{description}</p>
-                } */}
+                <p className='font-medium text-lg '> Price: ${minPrice} - {maxPrice}$ per hour</p>
+                
                  <p className='font-normal text-base text-black h-28  leading-relaxed'>
                         {description}
                    </p>
@@ -32,7 +29,7 @@ const PostedJobsCard = ({product, handleDelete}) => {
 };
 PostedJobsCard.propTypes = {
     product: PropTypes.object,
-    handleDelete: PropTypes.function
+    handleDelete: PropTypes.func
 
 }
 

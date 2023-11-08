@@ -8,13 +8,17 @@ import { Helmet } from "react-helmet-async";
 
 const PostedJobs = () => {
     const {user} = useAuth();
+    const [loader, setLoader] = useState(true)
     const [products, setProduct] = useState([]);
 
     const url = `http://localhost:5000/api/email-product?email=${user?.email}`
     
     useEffect(() => {
         axios.get(url,{withCredentials:true})
-        .then(data => setProduct(data.data))
+        .then(data =>{
+            setProduct(data.data)
+            setLoader(false)
+        })
     },[url])
     console.log(products);
 
@@ -52,10 +56,10 @@ const PostedJobs = () => {
             <Helmet>
                 <title>Bid Jobs | Posted Jobs</title>
             </Helmet>
-            <h2>PostedJobs</h2>
+            <h2> </h2>
             <div className="grid grid-cols-2 lg:grid-cols-2 gap-4">
                 {
-                    products.map(product => <PostedJobsCard
+                     loader?<span className="loading loading-spinner flex justify-center text-primary"></span> :products?.map(product => <PostedJobsCard
                          key={product._id}
                           product={product}
                           handleDelete ={ handleDelete}

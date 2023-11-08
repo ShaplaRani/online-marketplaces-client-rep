@@ -8,25 +8,27 @@ import { Helmet } from "react-helmet-async";
 const BidRequest = () => {
     const {user} = useAuth();
     const [bidJobs, setBidJobs] = useState([]);
-    const [isTrue, setIsTrue] = useState(null)
+   
+    const [loader, setLoader] = useState(true);
    const url = `http://localhost:5000/api/buyer-email?email=${user?.email}`
 
    useEffect(() => {
     axios.get(url,{withCredentials:true})
     .then(data => {
-        setBidJobs(data.data)
+        setBidJobs(data.data);
+        setLoader(false)
     })
 },[url])
 
 
    const handleAccept = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/api/buyer-email/${id}`,{
-            method:'PATCH',
+        fetch(`http://localhost:5000/api/update-status/${id}`,{
+            method:'PUT',
             headers: {
                 'content-type' : 'application/json'
             },
-            body: JSON.stringify({status: "in progress"})
+            body: JSON.stringify({status: "in progress",request:true})
         })
         .then(res => res.json())
         .then(data => {
@@ -43,22 +45,23 @@ const BidRequest = () => {
                  const updated =  bidJobs.find( job => job._id == id);
                  updated.status = "in progress";
 
-                const newJobs = [updated, ...remaining];
+                const newJobs = [ ...remaining,updated];
             
                 setBidJobs(newJobs);
-                setIsTrue(true);
+                //setLoader(false)
+                //setIsTrue(true);
             }
         })
    }
 
    const handleReject = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/api/buyer-email/${id}`,{
-        method:'PATCH',
+    fetch(`http://localhost:5000/api/update-status/${id}`,{
+        method:'PUT',
         headers: {
             'content-type' : 'application/json'
         },
-        body: JSON.stringify({status: "canceled"})
+        body: JSON.stringify({status: "canceled",request:true})
     })
     .then(res => res.json())
     .then(data => {
@@ -75,10 +78,11 @@ const BidRequest = () => {
              const updated =  bidJobs.find( job => job._id === id);
              updated.status = "canceled";
 
-            const newJobs = [updated, ...remaining];
+            const newJobs = [ ...remaining,updated];
             console.log('new', newJobs);
             setBidJobs(newJobs);
-            setIsTrue(true);
+            //setLoader(false)
+            //setIsTrue(true);
            
         }
     })
@@ -86,11 +90,11 @@ const BidRequest = () => {
 
    console.log(bidJobs);
     return (
-        <div className="bg-orange-50 py-20 min-h-[80vh]">
+        <div className="bg-blue-100 py-20 min-h-[80vh] container mx-auto rounded-lg my-20">
             <Helmet>
                 <title>Bid Jobs | Bid Request</title>
             </Helmet>
-        <h2 className="text-5xl"> Bits Requests: {}</h2>
+        <h2 className="text-5xl text-blue-700 font-bold mb-10 text-center"> My Bids Requests</h2>
         <div className=" w-10/12 mx-auto bg-white rounded-lg">
             <table className=" text-center table w-full">
                 {/* head */}
@@ -104,23 +108,23 @@ const BidRequest = () => {
                         <th>Status</th>
                         <th>Accept</th>
                         <th>Reject</th>
-                        <th>ID</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
 
                     {
-                        bidJobs?.map(job => <tr key={job._id}>
+                    loader?<span className="loading loading-spinner flex justify-center text-primary"></span> :    bidJobs?.map(job => <tr key={job._id}>
                             <td>{job.title}</td>
                             <td>{job.buyerEmail}</td>
                             <td>{job.date}</td>
                             <td>{job.status}</td>
                             <th><button onClick={() =>handleAccept(job._id)}
-                           >Accept</button></th>
+                           >{job.request? '':'Accept' }</button></th>
 
                             <th><button onClick={() =>handleReject(job._id)}
-                             >Reject</button></th>
-                            <td>{job._id}</td>
+                             >{job.request?'':'Reject'}</button></th>
+                            
                         </tr>)
                     }
 
