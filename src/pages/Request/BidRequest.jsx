@@ -10,6 +10,7 @@ const BidRequest = () => {
     const [bidJobs, setBidJobs] = useState([]);
    
     const [loader, setLoader] = useState(true);
+    //const [data, setData] = useState(true)
    const url = `https://online-marketplaces-server.vercel.app/api/buyer-email?email=${user?.email}`
 
    useEffect(() => {
@@ -35,19 +36,21 @@ const BidRequest = () => {
            // console.log('data',data);
             if(data.modifiedCount > 0) {
                 //update state
+                
+                const remaining = bidJobs.filter(job => job._id != id);
+                 const updated =  bidJobs.find( job => job._id == id);
+                 updated.status = "in progress";
+                 updated.request =false
+                const newJobs = [ ...remaining,updated];
+            
+                setBidJobs(newJobs);
                 Swal.fire({
                     title: 'Success!',
                     text: 'Job Status Update Successfully',
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 })
-                const remaining = bidJobs.filter(job => job._id != id);
-                 const updated =  bidJobs.find( job => job._id == id);
-                 updated.status = "in progress";
-
-                const newJobs = [ ...remaining,updated];
-            
-                setBidJobs(newJobs);
+               // setData(!data)
                 //setLoader(false)
                 //setIsTrue(true);
             }
@@ -68,21 +71,21 @@ const BidRequest = () => {
         //console.log('data',data);
         if(data.modifiedCount > 0) {
             //update state
+            
+            const remaining = bidJobs.filter(job => job._id !== id);
+             const updated =  bidJobs.find( job => job._id === id);
+             updated.status = "canceled";
+                updated.request =false
+            const newJobs = [ ...remaining,updated];
+            console.log('new', updated);
+            setBidJobs(newJobs);
             Swal.fire({
                 title: 'Success!',
                 text: 'Job Status Update Successfully',
                 icon: 'success',
                 confirmButtonText: 'Cool'
             })
-            const remaining = bidJobs.filter(job => job._id !== id);
-             const updated =  bidJobs.find( job => job._id === id);
-             updated.status = "canceled";
-
-            const newJobs = [ ...remaining,updated];
-            console.log('new', newJobs);
-            setBidJobs(newJobs);
-            //setLoader(false)
-            //setIsTrue(true);
+            //setData(!data)
            
         }
     })
