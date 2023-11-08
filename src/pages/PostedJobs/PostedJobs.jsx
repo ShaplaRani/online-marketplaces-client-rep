@@ -11,7 +11,7 @@ const PostedJobs = () => {
     const [loader, setLoader] = useState(true)
     const [products, setProduct] = useState([]);
 
-    const url = `http://localhost:5000/api/email-product?email=${user?.email}`
+    const url = `https://online-marketplaces-server.vercel.app/api/email-product?email=${user?.email}`
     
     useEffect(() => {
         axios.get(url,{withCredentials:true})
@@ -35,7 +35,7 @@ const PostedJobs = () => {
           }).then((result) => {
             if (result.isConfirmed) {
            
-            axios.delete(`http://localhost:5000/api/email-product/${id}`)
+            axios.delete(`https://online-marketplaces-server.vercel.app/api/email-product/${id}`)
             .then(data => {
                 console.log(data.data);
                 if(data.data.deletedCount > 0){

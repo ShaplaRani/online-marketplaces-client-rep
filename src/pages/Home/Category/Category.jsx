@@ -8,7 +8,7 @@ const Category = () => {
     const [categoryDate , setCategoryDate] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/category-product')
+        fetch('https://online-marketplaces-server.vercel.app/api/category-product')
         .then(res => res.json())
         .then(data => setAllCategory(data))
     },[])

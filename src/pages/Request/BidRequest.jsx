@@ -10,7 +10,7 @@ const BidRequest = () => {
     const [bidJobs, setBidJobs] = useState([]);
    
     const [loader, setLoader] = useState(true);
-   const url = `http://localhost:5000/api/buyer-email?email=${user?.email}`
+   const url = `https://online-marketplaces-server.vercel.app/api/buyer-email?email=${user?.email}`
 
    useEffect(() => {
     axios.get(url,{withCredentials:true})
@@ -23,7 +23,7 @@ const BidRequest = () => {
 
    const handleAccept = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/api/update-status/${id}`,{
+        fetch(`https://online-marketplaces-server.vercel.app/api/update-status/${id}`,{
             method:'PUT',
             headers: {
                 'content-type' : 'application/json'
@@ -56,7 +56,7 @@ const BidRequest = () => {
 
    const handleReject = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/api/update-status/${id}`,{
+    fetch(`https://online-marketplaces-server.vercel.app/api/update-status/${id}`,{
         method:'PUT',
         headers: {
             'content-type' : 'application/json'

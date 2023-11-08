@@ -44,7 +44,7 @@ const JobDetails = () => {
         }
         console.log(addJob);
        
-        fetch('http://localhost:5000/api/user/create-bitJob', {
+        fetch('https://online-marketplaces-server.vercel.app/api/user/create-bitJob', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
