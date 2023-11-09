@@ -28,7 +28,7 @@ const AddJob = () => {
             
         }
         console.log(addJob);
-        fetch('http://localhost:5000/api/user/create-product', {
+        fetch('https://online-marketplaces-server.vercel.app/api/user/create-product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

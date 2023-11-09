@@ -11,8 +11,8 @@ const Mybids = () => {
      const [loader, setLoader] = useState(true)
 
 
-     //http://localhost:5000
-    const url = `http://localhost:5000/api/user-email?email=${user?.email}`
+     //https://online-marketplaces-server.vercel.app
+    const url = `https://online-marketplaces-server.vercel.app/api/user-email?email=${user?.email}`
     
     useEffect(() => {
         axios.get(url,{withCredentials:true})
@@ -24,7 +24,7 @@ const Mybids = () => {
      
     const handleComplete = (id) => {
        // console.log(id);
-        fetch(`http://localhost:5000/api/delete-complete/${id}`,{
+        fetch(`https://online-marketplaces-server.vercel.app/api/delete-complete/${id}`,{
             method:'PATCH',
             headers: {
                 'content-type' : 'application/json'
@@ -51,7 +51,7 @@ const Mybids = () => {
 
 //sorting
     const  handleSort =() => {
-        axios.get(`http://localhost:5000/api/user-email?email=${user?.email}&sortField=status&sortOrder=asc`,
+        axios.get(`https://online-marketplaces-server.vercel.app/api/user-email?email=${user?.email}&sortField=status&sortOrder=asc`,
         {withCredentials:true})
         .then(data => {
             console.log('sort');
