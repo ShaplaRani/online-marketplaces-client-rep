@@ -1,11 +1,12 @@
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 
 
 const AddJob = () => {
     const {user} = useAuth();
-    console.log(user.email);
+    const navigate =useNavigate();
     const handleAddJob = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -27,7 +28,7 @@ const AddJob = () => {
             
         }
         console.log(addJob);
-        fetch('https://online-marketplaces-server.vercel.app/api/user/create-product', {
+        fetch('http://localhost:5000/api/user/create-product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -36,7 +37,7 @@ const AddJob = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                
                 if (data.insertedId) {
                       Swal.fire({
                         
@@ -45,6 +46,7 @@ const AddJob = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
+                    navigate('/postedJob')
                 }
             })
     }
@@ -53,9 +55,9 @@ const AddJob = () => {
             <Helmet>
                 <title>Bid Jobs | Add Job</title>
             </Helmet>
-            <h3 className="text-center mt-20 text-2xl font-bold text-blue-700">  Add Job</h3>
-            <div className="hero p-14 bg-blue-100 mb-20 mt-10 rounded-lg " >
-
+            <h3 className="text-center mt-20 text-4xl font-bold text-blue-700"> Please Add Job</h3>
+            <div className="hero p-20 bg-blue-100 mb-20 mt-10 rounded-lg " >
+           
                 <form onSubmit={handleAddJob} className="card-body w-full space-y-4">
                     {/* email and job tile */}
                     <div className="md:flex gap-4">

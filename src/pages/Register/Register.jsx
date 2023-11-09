@@ -145,12 +145,4 @@ const Register = () => {
 
 export default Register;
 
-// const Register = () => {
-//     return (
-//         <div>
-            
-//         </div>
-//     );
-// };
 
-// export default Register;

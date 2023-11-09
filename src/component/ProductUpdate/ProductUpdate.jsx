@@ -34,7 +34,7 @@ const ProductUpdate = () => {
             
         }
         console.log(updateJob);
-        axios.put(`https://online-marketplaces-server.vercel.app/api/update-product/${_id}`,updateJob)
+        axios.put(`http://localhost:5000/api/update-product/${_id}`,updateJob)
             .then(data => {
                 console.log(data.data);
                 if (data?.data?.modifiedCount > 0) {

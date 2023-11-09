@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import './job.css'
@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet-async";
 
 
 const JobDetails = () => {
-
+    const navigate = useNavigate();
     const [data, setDate] = useState(true)
     const {user} = useAuth();
     const job = useLoaderData()
@@ -44,7 +44,7 @@ const JobDetails = () => {
         }
         console.log(addJob);
        
-        fetch('https://online-marketplaces-server.vercel.app/api/user/create-bitJob', {
+        fetch('http://localhost:5000/api/user/create-bitJob', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -62,6 +62,7 @@ const JobDetails = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
+                    navigate('/bids')
                 }
             })
     }

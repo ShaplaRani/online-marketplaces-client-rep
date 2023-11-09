@@ -7,11 +7,22 @@ const Category = () => {
     const [allCategory , setAllCategory] = useState([]);
     const [categoryDate , setCategoryDate] = useState([])
 
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/api/category-product')
+    //     .then(res => res.json())
+    //     .then(data => setAllCategory(data))
+    // },[])
     useEffect(() => {
-        fetch('https://online-marketplaces-server.vercel.app/api/category-product')
+        fetch('http://localhost:5000/api/category-product')
         .then(res => res.json())
-        .then(data => setAllCategory(data))
+        .then(data => {
+          setAllCategory(data);
+      const webCategory = data.filter(data => data.category.toLowerCase() === 'Web Development'.toLowerCase())
+          setCategoryDate(webCategory);
+        })
     },[])
+
+
     console.log(allCategory);
 
     const handleCategory = category => {

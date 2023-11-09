@@ -11,7 +11,7 @@ const PostedJobs = () => {
     const [loader, setLoader] = useState(true)
     const [products, setProduct] = useState([]);
 
-    const url = `https://online-marketplaces-server.vercel.app/api/email-product?email=${user?.email}`
+    const url = `http://localhost:5000/api/email-product?email=${user?.email}`
     
     useEffect(() => {
         axios.get(url,{withCredentials:true})
@@ -35,7 +35,7 @@ const PostedJobs = () => {
           }).then((result) => {
             if (result.isConfirmed) {
            
-            axios.delete(`https://online-marketplaces-server.vercel.app/api/email-product/${id}`)
+            axios.delete(`http://localhost:5000/api/email-product/${id}`)
             .then(data => {
                 console.log(data.data);
                 if(data.data.deletedCount > 0){
@@ -56,7 +56,7 @@ const PostedJobs = () => {
             <Helmet>
                 <title>Bid Jobs | Posted Jobs</title>
             </Helmet>
-            <h2> </h2>
+            <h2 className="text-4xl text-center mb-10 text-blue-700 font-bold"> All Posted Jobs </h2>
             <div className="grid grid-cols-2 lg:grid-cols-2 gap-4">
                 {
                      loader?<span className="loading loading-spinner flex justify-center text-primary"></span> :products?.map(product => <PostedJobsCard

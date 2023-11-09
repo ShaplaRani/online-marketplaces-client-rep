@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import { BiDiamond } from "react-icons/bi";
 
 const Mybids = () => {
     const {user} = useAuth();
@@ -10,8 +11,8 @@ const Mybids = () => {
      const [loader, setLoader] = useState(true)
 
 
-     //https://online-marketplaces-server.vercel.app
-    const url = `https://online-marketplaces-server.vercel.app/api/user-email?email=${user?.email}`
+     //http://localhost:5000
+    const url = `http://localhost:5000/api/user-email?email=${user?.email}`
     
     useEffect(() => {
         axios.get(url,{withCredentials:true})
@@ -23,12 +24,12 @@ const Mybids = () => {
      
     const handleComplete = (id) => {
        // console.log(id);
-        fetch(`https://online-marketplaces-server.vercel.app/api/delete-complete/${id}`,{
+        fetch(`http://localhost:5000/api/delete-complete/${id}`,{
             method:'PATCH',
             headers: {
                 'content-type' : 'application/json'
             },
-            body: JSON.stringify({complete: true})
+            body: JSON.stringify({complete: true,status: "complete"})
         })
         .then(res => res.json())
         .then(data => {
@@ -38,7 +39,7 @@ const Mybids = () => {
                 const remaining = bidJobs.filter(job => job._id != id);
                  const updated =  bidJobs.find( job => job._id == id);
                  updated.complete = true;
-
+                 updated.status = "complete";
                 const newJobs = [ ...remaining, updated];
             
                 setBidJobs(newJobs);
@@ -50,7 +51,7 @@ const Mybids = () => {
 
 //sorting
     const  handleSort =() => {
-        axios.get(`https://online-marketplaces-server.vercel.app/api/user-email?email=${user?.email}&sortField=status&sortOrder=asc`,
+        axios.get(`http://localhost:5000/api/user-email?email=${user?.email}&sortField=status&sortOrder=asc`,
         {withCredentials:true})
         .then(data => {
             console.log('sort');
@@ -65,7 +66,8 @@ const Mybids = () => {
             <Helmet>
                 <title>Bid Jobs | My Bids</title>
             </Helmet>
-        <h2 className="text-5xl text-center mb-10 text-blue-700 font-bold">My Bids </h2>
+            <BiDiamond className="mx-auto text-4xl mb-2 text-blue-700"></BiDiamond>
+        <h2 className="text-4xl text-center mb-10 text-blue-700 font-bold"> All Bids </h2>
            <div className="flex justify-end mr-10 mb-7">
               <button onClick={ handleSort} className="btn bg-blue-700 text-white">Sorting</button>
            </div>
@@ -94,7 +96,7 @@ const Mybids = () => {
                             <td>{job.status}</td>
                             <th className=" border text-lg">
                                 {
-                                  job.status == 'in progress'?
+                                  job.status == 'in progress' || job.status == 'complete'?
                                    <button disabled={false}
                                     onClick={() => handleComplete(job._id)}
                                     

@@ -43,7 +43,7 @@ import { Helmet } from "react-helmet-async";
             navigate(location?.state? location.state:'/')
         })
         .catch(error => {
-            console.error(error)
+          Swal.fire(error)
         })
 
       }
@@ -55,7 +55,7 @@ import { Helmet } from "react-helmet-async";
             navigate(location?.state? location.state:'/')
         })
         .then( error => {
-            console.log(error);
+          Swal.fire(error);
         })
       }
 
