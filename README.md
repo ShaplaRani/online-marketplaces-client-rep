@@ -1,6 +1,6 @@
 
 
-Click here for the private repo: [https://redundant-bread.surge.sh/postedJob](https://redundant-bread.surge.sh/postedJob)
+Click here for the private repo: [https://redundant-bread.surge.sh](https://redundant-bread.surge.sh)
 
 
 ###  At least five  different features and functionalities of my website is giving below.
