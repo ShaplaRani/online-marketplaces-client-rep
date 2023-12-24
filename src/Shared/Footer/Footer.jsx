@@ -4,7 +4,7 @@ import { BiLogoFacebook } from "react-icons/bi";
 import logo from '../../assets/logo2.png'
 const Footer = () => {
     return (
-        <div className=" bg-orange-100 pt-24 pb-8">
+        <div className=" bg-blue-100 pt-24 pb-8">
             <div className="w-10/12  mx-auto flex justify-between items-center mb-7 " >
                
                     <div className="flex items-center">

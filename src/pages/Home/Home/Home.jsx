@@ -5,6 +5,8 @@ import FindWork from "../FindWork/FindWork";
 import Service from "../Service/Service";
 import Talent from "../Talent/Talent";
 import Help from "../Help/Help";
+import Testimonial from "../Testimonital/Testimonial";
+import FAQ from "../FAQ/FAQ";
 
 
 const Home = () => {
@@ -19,6 +21,8 @@ const Home = () => {
             <FindWork></FindWork>
             <Help></Help>
             <Talent></Talent>
+            <Testimonial></Testimonial>
+            <FAQ></FAQ>
         </div>
     );
 };

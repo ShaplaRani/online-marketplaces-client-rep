@@ -33,7 +33,7 @@ const Category = () => {
 console.log(categoryDate);
     return (
         <div className='container mx-auto my-20 p-5'>
-              <h2 className='text-center mb-6 text-2xl md:text-3xl font-extrabold text-blue-600'>Browse talent by category</h2>
+              <h2 className='text-center mb-6 text-2xl md:text-4xl font-extrabold text-blue-600'>Browse talent by category</h2>
              <Tabs>
     <TabList className="text-center  flex mb-20 justify-center">
       <Tab onClick={() =>handleCategory('Web Development')}className=" py-6 rounded-l-xl px-2 md:px-4 lg:px-10 focus:bg-white bg-gray-200 border font-bold text-lg md:text-xl capitalize focus:text-emerald-400">web development</Tab>

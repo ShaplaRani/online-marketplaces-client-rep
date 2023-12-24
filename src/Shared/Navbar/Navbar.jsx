@@ -17,7 +17,7 @@ const Navbar = () => {
             })
             .catch(error => {
                 console.error(error);
-                //  swal(error.message)
+                
             })
     }
 

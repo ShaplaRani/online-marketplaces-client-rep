@@ -25,12 +25,3 @@ PrivateRoutes.propTypes = {
 export default PrivateRoutes;
 
 
-// const PrivateRoutes = () => {
-//     return (
-//         <div>
-            
-//         </div>
-//     );
-// };
-
-// export default PrivateRoutes;

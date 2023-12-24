@@ -4,7 +4,7 @@ const FindWork = () => {
     return (
         <div className="lg:flex container mx-auto mb-20 p-4">
                <div className="flex-1 ">
-                <img className="rounded-xl" src="https://i.ibb.co/M7RXpt9/find.jpg" alt="" />
+                <img className="rounded-xl" src="https://i.postimg.cc/xTWv4P6d/find.jpg" alt="" />
               </div>
                 <div className="flex-1  flex items-center justify-center mt-20 lg:mt-0 lg:justify-end">
                 <div className="space-y-8">
